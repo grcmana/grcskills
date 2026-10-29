@@ -25,8 +25,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "${GITHUB_REF_NAME}" dist/catalog.json \
-            --title "GRC Skills ${GITHUB_REF_NAME}" --generate-notes --verify-tag
+          # Works whether the tag was pushed from git or created by drafting a release in the GitHub UI.
+          gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1 || \
+            gh release create "${GITHUB_REF_NAME}" --title "GRC Skills ${GITHUB_REF_NAME}" --generate-notes --verify-tag
+          gh release upload "${GITHUB_REF_NAME}" dist/catalog.json --clobber
       - name: Trigger website rebuild (optional)
         env:
           HOOK: ${{ secrets.WEBSITE_DEPLOY_HOOK }}
