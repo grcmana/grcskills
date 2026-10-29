@@ -30,7 +30,13 @@ jobs:
             gh release create "${GITHUB_REF_NAME}" --title "GRC Skills ${GITHUB_REF_NAME}" --generate-notes --verify-tag
           gh release upload "${GITHUB_REF_NAME}" dist/catalog.json --clobber
       - name: Trigger website rebuild (optional)
+        # Checked in the shell: a step's own env isn't available to its `if:`, which made the
+        # old condition always false, so the hook never fired.
         env:
           HOOK: ${{ secrets.WEBSITE_DEPLOY_HOOK }}
-        if: ${{ env.HOOK != '' }}
-        run: curl -fsS -X POST "$HOOK" > /dev/null && echo "Website rebuild triggered"
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "WEBSITE_DEPLOY_HOOK not set; skipping website rebuild"
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK" > /dev/null && echo "Website rebuild triggered"
