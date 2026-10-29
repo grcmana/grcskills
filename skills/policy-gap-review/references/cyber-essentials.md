@@ -12,14 +12,14 @@ licence_note: Own-words summary. Always check the current requirements document 
 A UK baseline certification that proves five technical controls against common internet-borne attacks. It's often required for UK public sector contracts and increasingly by insurers and supply chains.
 
 - **Cyber Essentials (CE)**: a verified self-assessment questionnaire. A board member or equivalent must sign the declaration. A certification body marks it.
-- **Cyber Essentials Plus (CE+)**: CE **plus** a hands-on technical audit (sampled devices, vulnerability scans, tests for malware and MFA). CE must be achieved first. CE+ has to be completed within a fixed window after CE (check the current rule).
+- **Cyber Essentials Plus (CE+)**: CE **plus** a hands-on technical audit (sampled devices, vulnerability scans, tests for malware and MFA). CE must be achieved first. The CE+ audit must be completed within **3 months** of the CE (basic) certification.
 - Certification is valid for **12 months**.
 
 ## Version note (2026)
 - Assessment accounts created on or after **27 April 2026** use **Requirements v3.3** and the **Danzell** question set, which replaces Willow (v3.2).
 - Accounts created before that date were assessed under Willow, with six months to complete.
 - Headline changes:
-  - **MFA is mandatory for cloud services wherever it's available.** Not enabling it where it's technically possible is a fail.
+  - **MFA is mandatory for all users on every cloud service that offers it**, including where it's offered on free or paid tiers. Not enabling it is an automatic fail.
   - Clearer scoping, especially for cloud services.
   - More emphasis on passwordless authentication options.
   - Explicit removal of unnecessary software.
@@ -31,9 +31,9 @@ A UK baseline certification that proves five technical controls against common i
 |---|---|
 | **Firewalls** | Every in-scope device is protected by a correctly configured boundary or software firewall. Default admin passwords are changed. Inbound rules are approved, documented and removed when no longer needed. Admin interfaces aren't exposed to the internet unless there's a justified need, and then they're protected with MFA or an IP allow-list. |
 | **Secure configuration** | Remove or disable unnecessary software, accounts and services. Change default passwords. Disable auto-run. Device unlock is required (PIN or password, biometrics allowed) with protection against brute force. |
-| **Security update management** | All software is licensed and supported (unsupported software is removed or segregated out of scope). Install **critical and high-risk updates (CVSS v3 ≥ 7, or vendor "critical"/"high") within 14 days** of release, including firmware. Turn on automatic updates where possible. |
-| **User access control** | Accounts are provisioned through a process and removed promptly. Least privilege applies. Separate admin accounts are used only for admin tasks. **MFA on all cloud services where available.** Password-based authentication is protected by MFA, a minimum length, or blocking of common passwords. Check the current length rules. |
-| **Malware protection** | Use anti-malware (with signature updates and on-access scanning, plus web filtering) **or** application allow-listing **or** sandboxing, per device type. |
+| **Security update management** | All software is licensed and supported (unsupported software is removed or segregated out of scope). Install **critical and high-risk updates (CVSS v3 ≥ 7, or vendor "critical"/"high") within 14 days** of release, including router and firewall firmware. Turn on automatic updates where possible. |
+| **User access control** | Accounts are provisioned through a process and removed promptly. Least privilege applies. Separate admin accounts are used only for admin tasks. **MFA on all cloud services where available.** Passwords are protected by one of: MFA; a minimum of 12 characters; or a minimum of 8 characters with automatic blocking of common passwords. |
+| **Malware protection** | Use anti-malware software (kept up to date, scanning files on access and blocking malicious websites) **or** application allow-listing, as appropriate per device type. Sandboxing was removed as an option in v3.1. |
 
 ## Scoping essentials
 - The default and preferred scope is the **whole organisation**. A sub-set is allowed only if it's segregated by a boundary firewall or VLAN and clearly named.

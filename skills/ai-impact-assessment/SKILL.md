@@ -30,7 +30,7 @@ Read `grc/context/company-profile.md`, especially section 5 (AI). Establish the 
 
 ## Screening questions (screen mode)
 1. Does it process personal data? If yes, consider a DPIA (use the `dpia` skill).
-2. Does it make or materially support decisions about people (hiring, credit, access to services, performance)? If yes, it's high impact, and GDPR Art. 22 needs checking.
+2. Does it make or materially support decisions about people (hiring, credit, access to services, performance)? If yes, it's high impact, and GDPR automated decision-making rules need checking (EU Art. 22; UK Arts. 22A–22D).
 3. Is its output shown to customers or the public without human review?
 4. Could failure, bias or misuse cause harm to individuals, groups or society?
 5. Is it in a regulated domain, or could it fall into a high-risk category under the EU AI Act? If so, flag it for legal review.

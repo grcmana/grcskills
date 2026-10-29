@@ -27,7 +27,7 @@ framework_refs: [ISO42001:6.1.4, ISO42001:A.5.2, ISO42001:A.5.3, ISO42001:A.5.4,
 | Affected parties | TBC |
 | Human oversight points | TBC |
 | Personal data? | y/n (if yes, check whether a DPIA is needed) |
-| Automated decisions about people? | y/n (if yes, check GDPR Art. 22) |
+| Automated decisions about people? | y/n (if yes, check GDPR Art. 22 (EU) / Arts. 22A–22D (UK)) |
 
 ## 2. Impact on individuals, groups and society
 | Dimension | Potential impact | Affected party | Likelihood (1–5) | Severity (1–5) | Score | Mitigation |

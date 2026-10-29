@@ -11,7 +11,7 @@ licence_note: GDPR is EU law; article references used. Not legal advice.
 
 ## What it is
 Law governing the processing of personal data. Applies to organisations established in the EU/UK, and to those outside that offer goods or services to, or monitor, people in the EU/UK (Art. 3).
-- **UK GDPR** sits alongside the Data Protection Act 2018. The UK has made reforms via the **Data (Use and Access) Act 2025**, which is being phased in. Check ICO guidance for current UK positions on legitimate interests, automated decision-making, cookies and subject access requests.
+- **UK GDPR** sits alongside the Data Protection Act 2018. The UK reformed it via the **Data (Use and Access) Act 2025 (DUAA)**. The main UK GDPR and PECR changes took effect on 5 February 2026: recognised legitimate interests, Arts. 22A–22D on automated decisions (replacing Art. 22 in the UK), 'reasonable and proportionate' subject access searches, new cookie exemptions, and PECR fines raised to UK GDPR levels. A complaints-handling duty followed in June 2026. Some later-stage provisions may still be commencing, so check ICO guidance.
 - There's no "GDPR certification" for organisations in common use. Compliance is shown through **accountability** (Art. 5(2)).
 
 ## Roles
@@ -27,7 +27,7 @@ Consent · contract · legal obligation · vital interests · public task · leg
 Special category data (Art. 9) and criminal offence data (Art. 10) need an additional condition.
 
 ## Individuals' rights (Arts. 12–22)
-Information/transparency · access · rectification · erasure · restriction · portability · objection · rights related to automated decision-making. The standard response time is **one month**, extendable in some cases.
+Information/transparency · access · rectification · erasure · restriction · portability · objection · rights related to automated decision-making (EU Art. 22; UK Arts. 22A–22D). The standard response time is **one month**, extendable in some cases.
 
 ## Accountability artefacts (what a customer, auditor or regulator asks for)
 | Artefact | Article | Notes |
