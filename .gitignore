@@ -1,0 +1,7 @@
+# Never commit real GRC data from testing
+grc/
+.DS_Store
+__pycache__/
+.env
+.env.*
+.claude/settings.local.json
