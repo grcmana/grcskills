@@ -1,3 +1,7 @@
+<p align="center">
+  <img src=".github/assets/banner.png" alt="GRC Skills: skills that teach AI agents to do GRC work properly. Install with npx skills add grcmana/grcskills. Covers ISO 27001, SOC 2, GDPR, ISO 42001 and Cyber Essentials." width="100%">
+</p>
+
 # GRC Skills
 
 **Open-source agent skills for Governance, Risk & Compliance practitioners.**
