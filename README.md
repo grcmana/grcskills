@@ -70,7 +70,9 @@ grcskills/
 ├── knowledge/            # single source of truth for shared knowledge
 │   ├── frameworks/       # ISO 27001, SOC 2, CE, GDPR, ISO 42001, crosswalk
 │   └── methodology/      # workspace convention, risk, evidence, writing standards
-└── scripts/sync_references.py
+├── scripts/
+│   ├── sync_references.py   # sync knowledge into skills + validate
+│   └── build_catalog.py     # catalog.json for grcskills.io (attached to releases)
 ```
 
 Framework packs are **own-words summaries** that reference clause and control IDs. They don't reproduce standard text. Each carries an `as_of` date.

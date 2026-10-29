@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: policy-management
+  summary: "Recommends the policies you actually need and drafts them for your stack."
+  frameworks: "all"
 ---
 
 # Policy Writer

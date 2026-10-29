@@ -19,7 +19,8 @@ Thanks for helping GRC practitioners work smarter. Contributions from practition
 ## Skill structure
 ```
 skills/<skill-name>/
-├── SKILL.md       # required: frontmatter name (= folder name) + description (≤1024 chars)
+├── SKILL.md       # required: frontmatter name (= folder name), description (≤1024 chars),
+│                  #   metadata: author, version, collection, summary (≤140 chars), frameworks
 ├── references/    # synced knowledge + skill-specific references
 └── assets/        # templates (CSV/MD) the skill fills in
 ```
@@ -30,7 +31,10 @@ Name skills in lowercase-with-hyphens, after the job to be done (e.g. `supplier-
 ```bash
 python3 scripts/sync_references.py          # sync shared knowledge into skills
 python3 scripts/sync_references.py --check  # what CI runs
+python3 scripts/build_catalog.py            # validates catalogue metadata
 ```
+
+`metadata.summary` is the one-line, plain-English description shown on grcskills.io. `metadata.frameworks` is `all` or a comma-separated list of `ISO 27001, SOC 2, Cyber Essentials, GDPR, ISO 42001`. The website is maintained separately and updates only when maintainers cut a release.
 Then test your skill in at least one agent (e.g. Claude Code) against the fictional Acme Analytics example in [GRC OS](https://github.com/grcmana/grc-os).
 
 ## Licence

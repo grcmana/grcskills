@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: audit-evidence
+  summary: "Plans what evidence to collect, from which system, by whom and when."
+  frameworks: "all"
 ---
 
 # Evidence Request List

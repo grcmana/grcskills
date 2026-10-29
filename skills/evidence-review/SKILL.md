@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: audit-evidence
+  summary: "Checks collected evidence before your auditor sees it."
+  frameworks: "all"
 ---
 
 # Evidence Review

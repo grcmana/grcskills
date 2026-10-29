@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: risk-management
+  summary: "Identifies, scores and treats your risks, with each treatment mapped to controls."
+  frameworks: "all"
 ---
 
 # Risk Register

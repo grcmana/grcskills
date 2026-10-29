@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: foundations
+  summary: "Turns your workspace into a one-page status, board report or management review pack."
+  frameworks: "all"
 ---
 
 # GRC Status

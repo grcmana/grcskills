@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: foundations
+  summary: "Builds the company profile, scope and framework choice every other skill reads."
+  frameworks: "all"
 ---
 
 # Company Context

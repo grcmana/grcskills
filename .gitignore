@@ -5,3 +5,6 @@ __pycache__/
 .env
 .env.*
 .claude/settings.local.json
+
+# Build output
+dist/

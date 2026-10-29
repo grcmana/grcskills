@@ -8,3 +8,4 @@ This repo is a **library of portable GRC agent skills** distributed with `npx sk
 - Never add copyrighted standard text (ISO, AICPA). Use IDs and own-words summaries.
 - Bump `metadata.version` in a skill when you change its behaviour. Update the `as_of` date in a framework pack when you change its facts.
 - Run `python3 scripts/sync_references.py --check` before committing.
+- The grcskills.io website lives in a separate private repo. This repo's only interface to it is `catalog.json`, built by `scripts/build_catalog.py` and attached to tagged releases. Keep `metadata.summary` and `metadata.frameworks` accurate.

@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: frameworks
+  summary: "Screens for and drafts a GDPR data protection impact assessment."
+  frameworks: "GDPR"
 ---
 
 # DPIA (Data Protection Impact Assessment)

@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: risk-management
+  summary: "Inventories your AI and assesses its risks and impacts on people."
+  frameworks: "ISO 42001, GDPR"
 ---
 
 # AI Impact Assessment

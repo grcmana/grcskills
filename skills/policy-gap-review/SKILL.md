@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: policy-management
+  summary: "Reviews your existing policies the way an auditor would."
+  frameworks: "all"
 ---
 
 # Policy Gap Review

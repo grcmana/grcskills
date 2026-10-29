@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: audit-evidence
+  summary: "Scores how ready you are for audit and lays out the roadmap to get there."
+  frameworks: "all"
 ---
 
 # Audit Readiness

@@ -1,0 +1,6 @@
+# Every change needs maintainer review. Turn on "Require review from Code Owners"
+# in the main branch protection rule for this to be enforced.
+*                     @grcmana/maintainers
+/knowledge/           @grcmana/maintainers
+/.github/             @grcmana/maintainers
+/scripts/             @grcmana/maintainers

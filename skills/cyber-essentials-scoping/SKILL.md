@@ -6,6 +6,8 @@ metadata:
   author: GRCMANA
   version: 0.1.0
   collection: frameworks
+  summary: "Scopes Cyber Essentials and finds the hard fails before you submit."
+  frameworks: "Cyber Essentials"
 ---
 
 # Cyber Essentials Scoping & Pre-Assessment
