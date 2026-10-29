@@ -1,5 +1,5 @@
-# Every change needs maintainer review. Turn on "Require review from Code Owners"
-# in the main branch protection rule for this to be enforced.
+# Every change needs maintainer review. Enforced by the "Require review from
+# Code Owners" rule on main. The team must be visible and have write access.
 *                     @grcmana/maintainers
 /knowledge/           @grcmana/maintainers
 /.github/             @grcmana/maintainers
