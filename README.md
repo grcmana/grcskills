@@ -15,7 +15,7 @@ A collection of AI agent skills for governance, risk and compliance work. It's b
 
 The skills cover company context, risk registers, AI impact assessments, policies, audit readiness, evidence and DPIAs across **ISO 27001, SOC 2, Cyber Essentials, GDPR and ISO 42001**. They work with Claude Code, OpenAI Codex, Cursor and any agent that supports the [Agent Skills spec](https://agentskills.io).
 
-Built by **Harry West**, founder of [GRCMANA](https://grcmana.com). Harry has spent around 20 years in cybersecurity, including Global CISO roles, and holds ISO 27001, ISO 42001, ISO 9001 and Cyber Essentials certifications. These skills encode how he runs GRC programmes in practice: start from the business's real context, write controls an auditor can test, and keep a human accountable for every decision.
+Built by **Harry West**, founder of [GRCMANA](https://grcmana.com). Harry has spent around 20 years in cybersecurity, including Global CISO roles. He is GRCP certified and a Certified Lead Implementer for ISO 27001, ISO 27701 and ISO 42001. These skills encode how he runs GRC programmes in practice: start from the business's real context, write controls an auditor can test, and keep a human accountable for every decision.
 
 - **New skills and framework updates:** subscribe at [grcskills.io](https://grcskills.io).
 - **The full workspace:** [GRC OS](https://github.com/grcmana/grc-os) bundles every skill with operating instructions, guardrails and a worked example.
