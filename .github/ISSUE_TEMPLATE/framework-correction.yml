@@ -1,0 +1,29 @@
+name: Framework correction
+description: Something in a framework pack or skill is wrong, outdated or misleading
+title: "[correction] "
+labels: [framework-correction]
+body:
+  - type: dropdown
+    id: framework
+    attributes:
+      label: Framework
+      options: [ISO 27001, SOC 2, Cyber Essentials, GDPR, ISO 42001, Crosswalk, Methodology, Other]
+    validations: { required: true }
+  - type: input
+    id: location
+    attributes:
+      label: File and section
+      placeholder: knowledge/frameworks/cyber-essentials.md, "The five controls"
+    validations: { required: true }
+  - type: textarea
+    id: issue
+    attributes:
+      label: What's wrong, and what it should say
+      description: Paraphrase. Please don't paste copyrighted standard text (ISO, AICPA).
+    validations: { required: true }
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: Official guidance, scheme document, regulator page, or certification body confirmation.
+    validations: { required: true }

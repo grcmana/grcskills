@@ -1,0 +1,22 @@
+name: Skill problem
+description: A skill gave a poor, wrong or unsafe result
+title: "[skill] "
+labels: [skill-problem]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      placeholder: risk-register
+    validations: { required: true }
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and model
+      placeholder: Claude Code, Opus
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+      description: Remove any real company, customer or personal data before posting.
+    validations: { required: true }
