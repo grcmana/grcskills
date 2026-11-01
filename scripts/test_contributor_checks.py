@@ -137,6 +137,16 @@ class Folders(unittest.TestCase):
         self.assertEqual(people["someone"]["avatar"], "https://github.com/someone.png")
         self.assertEqual(people["someone"]["links"], {"x": "https://x.com/someone"})
 
+    def test_yaml_comments_and_fragments(self):
+        people, errors = self.build({"someone/README.md": (
+            "---\nname: Some One   # required\ngithub: someone # must match\n"
+            "role: \"GRC lead # 1\"  # quoted keeps the hash\n"
+            "website: https://example.com/page#top\n---\n" + self.BIO)})
+        self.assertEqual(errors, [])
+        p = people["someone"]
+        self.assertEqual((p["name"], p["role"], p["links"]["website"]),
+                         ("Some One", "GRC lead # 1", "https://example.com/page#top"))
+
     def test_no_avatar_is_null(self):
         people, errors = self.build({"someone/README.md": self.profile("someone")})
         self.assertEqual(errors, [])
