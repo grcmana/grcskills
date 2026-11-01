@@ -3,7 +3,7 @@ name: company-context
 description: Build or refresh the company GRC profile that every other GRC skill depends on — business model, data handled, tech stack, people, customer and regulatory drivers, scope, and recommended frameworks (ISO 27001, SOC 2, Cyber Essentials, GDPR, ISO 42001). Use when starting a compliance programme, onboarding to GRC, when a customer asks for a certification, or when the user says "set up my company context", "which framework do we need", or "scope our ISMS".
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: foundations
   summary: "Builds the company profile, scope and framework choice every other skill reads."
