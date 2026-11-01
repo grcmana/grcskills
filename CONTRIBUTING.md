@@ -21,9 +21,28 @@ Thanks for helping GRC practitioners work smarter. Contributions from practition
 skills/<skill-name>/
 ├── SKILL.md       # required: frontmatter name (= folder name), description (≤1024 chars),
 │                  #   metadata: author, version, collection, summary (≤140 chars), frameworks
+├── README.md      # the skill's page on grcskills.io (for people, not the agent)
 ├── references/    # synced knowledge + skill-specific references
 └── assets/        # templates (CSV/MD) the skill fills in
 ```
+
+## Skill pages (README.md)
+Each skill has a human-facing page at `skills/<name>/README.md`. It's shown on GitHub and published to grcskills.io when a release is cut. `SKILL.md` tells the agent what to do; the README tells people why and when to use the skill.
+
+Copy [`templates/skill-README.md`](templates/skill-README.md) and keep its ten `##` headings exactly. CI checks:
+- 800–1,500 words (code blocks don't count)
+- the headings, in order
+- at least three FAQ questions as `###` headings
+- related-skill links point to real skills
+- no raw HTML, and no claim that an organisation "is compliant" or "certified"
+
+The worked example must be fictional. [`skills/dpia/README.md`](skills/dpia/README.md) is the reference example. New skills need a README to be merged.
+
+## Categories
+A skill's category is `metadata.collection` in `SKILL.md`. Categories are defined in `collections/<slug>.md`: a title, a display order, and a 100–400 word introduction for the category page. Propose a new category in an issue first.
+
+## Get credited
+Add a profile at `contributors/<your-github-handle>.md` (see [`contributors/README.md`](contributors/README.md)) and add your handle to `metadata.author` in any skill you wrote, e.g. `author: grcmana, your-handle`. Profiles are optional and public; only name, role, website, LinkedIn and a short bio are accepted.
 
 Name skills in lowercase-with-hyphens, after the job to be done (e.g. `supplier-risk`, not `tprm-v2`). The `description` must say **what the skill does and when to use it**, including the phrases practitioners actually type.
 
@@ -31,7 +50,7 @@ Name skills in lowercase-with-hyphens, after the job to be done (e.g. `supplier-
 ```bash
 python3 scripts/sync_references.py          # sync shared knowledge into skills
 python3 scripts/sync_references.py --check  # what CI runs
-python3 scripts/build_catalog.py            # validates catalogue metadata
+python3 scripts/build_catalog.py            # validates metadata, skill pages, categories and profiles
 ```
 
 `metadata.summary` is the one-line, plain-English description shown on grcskills.io. `metadata.frameworks` is `all` or a comma-separated list of `ISO 27001, SOC 2, Cyber Essentials, GDPR, ISO 42001`. The website is maintained separately and updates only when maintainers cut a release.
