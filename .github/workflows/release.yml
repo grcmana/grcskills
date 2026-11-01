@@ -20,7 +20,7 @@ jobs:
       - name: Validate
         run: python3 scripts/sync_references.py --check
       - name: Build catalog.json
-        run: python3 scripts/build_catalog.py --version "${GITHUB_REF_NAME}" --out dist/catalog.json
+        run: python3 scripts/build_catalog.py --require-readmes --version "${GITHUB_REF_NAME}" --out dist/catalog.json
       - name: Publish GitHub release with catalog.json
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

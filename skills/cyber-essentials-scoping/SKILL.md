@@ -3,7 +3,7 @@ name: cyber-essentials-scoping
 description: Scope and pre-assess a UK Cyber Essentials / Cyber Essentials Plus certification (Requirements v3.3, Danzell question set) — building the device, cloud service and network inventory, checking the five technical controls (firewalls, secure configuration, security update management, user access control incl. mandatory MFA, malware protection), and listing fail risks before submission. Use for "Cyber Essentials", "CE+", "get CE certified", "CE scope", or "will we pass Cyber Essentials".
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: frameworks
   summary: "Scopes Cyber Essentials and finds the hard fails before you submit."

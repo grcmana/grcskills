@@ -3,7 +3,7 @@ name: audit-readiness
 description: Run a readiness / gap assessment against ISO 27001, SOC 2, Cyber Essentials, GDPR or ISO 42001 — scoring each requirement, identifying gaps, estimating effort, and producing a prioritised remediation roadmap to Stage 1/Stage 2, Type I/Type II, or CE submission. Use for "are we ready for our audit", "gap assessment", "readiness assessment", "how far are we from ISO 27001 / SOC 2", or "what do we need before the auditor arrives".
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: audit-evidence
   summary: "Scores how ready you are for audit and lays out the roadmap to get there."

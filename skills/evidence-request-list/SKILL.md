@@ -3,7 +3,7 @@ name: evidence-request-list
 description: Generate a deduplicated, control-mapped evidence request list and evidence tracker (CSV) for ISO 27001, SOC 2, Cyber Essentials Plus, GDPR and ISO 42001 — with owners, source systems, frequency and due dates, so one artefact satisfies multiple frameworks. Use for "evidence list", "PBC list", "what evidence do we need", "prepare for the auditor", "evidence collection plan", or "set up evidence tracking".
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: audit-evidence
   summary: "Plans what evidence to collect, from which system, by whom and when."

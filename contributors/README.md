@@ -1,6 +1,6 @@
 # Contributors
 
-Each folder here is an **opt-in** public profile shown on [grcskills.io/contributors](https://grcskills.io). Add yours in the same pull request as your first contribution.
+Each folder here is an **opt-in** public profile for an individual contributor (profiles are for people, not companies) shown on [grcskills.io/contributors](https://grcskills.io). Add yours in the same pull request as your first contribution.
 
 ```
 contributors/
@@ -18,7 +18,6 @@ contributors/
    |---|---|
    | `name` | Required. Your display name. |
    | `github` | Required. Must match the folder name. Your GitHub link is added for you. |
-   | `kind` | `person` (default) or `organisation`. |
    | `role` | 80 characters max. |
    | `website` | Any `https://` URL. |
    | `linkedin` | `https://www.linkedin.com/in/…` (or `linkedin.com`) |
@@ -32,7 +31,7 @@ contributors/
 
    There is deliberately no field for email, location or employer.
 3. Write a short bio below the frontmatter: 20–300 words, plain Markdown, no HTML.
-4. To be credited as a skill author, add your handle to `metadata.author` in that skill's `SKILL.md` (comma-separated, e.g. `author: grcmana, your-handle`).
+4. To be credited as a skill author, add your handle to `metadata.author` in that skill's `SKILL.md` (comma-separated, e.g. `author: harrywestuk, your-handle`).
 
 ## 2. Your picture (optional)
 

@@ -3,7 +3,7 @@ name: policy-gap-review
 description: Review existing policies against ISO 27001, SOC 2, Cyber Essentials, GDPR and ISO 42001 requirements and auditor expectations — flagging missing coverage, untestable statements, unkeepable commitments, missing document control, and contradictions with actual practice. Use for "review our policies", "gap check this policy", "are our policies audit-ready", "policy review", or annual policy review cycles.
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: policy-management
   summary: "Reviews your existing policies the way an auditor would."

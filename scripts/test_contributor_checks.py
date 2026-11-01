@@ -152,6 +152,7 @@ class Folders(unittest.TestCase):
             "handle mismatch": {"someone/README.md": self.profile("other")},
             "bad folder name": {"Some_One/README.md": self.profile("some_one")},
             "old avatar key": {"someone/README.md": self.profile("someone", "avatar: avatar.png\n")},
+            "kind field": {"someone/README.md": self.profile("someone", "kind: organisation\n")},
             "bad link": {"someone/README.md": self.profile("someone", "linkedin: https://evil.example/\n")},
         }
         for label, files in cases.items():

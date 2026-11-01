@@ -58,7 +58,7 @@ The README always has these `##` sections, in this order (enforced by CI): What 
 |---|---|---|
 | `handle` | string | GitHub handle, lowercase. Use in the URL. |
 | `name` | string | Display name. |
-| `kind` | `"person"` or `"organisation"` | |
+| `kind` | `"person"` | Always `"person"`: profiles are for individuals only. Kept for compatibility; may be removed in a future schema. |
 | `role` | string | 80 characters max, may be empty. |
 | `links` | object | Optional keys `website`, `linkedin`, `x`, `youtube`, `medium`, `tiktok`, `facebook`, each a full `https://` URL validated against the host table below. A key is omitted when unset, never an empty string. |
 | `github_url` | string | Derived from the handle. |
@@ -67,7 +67,7 @@ The README always has these `##` sections, in this order (enforced by CI): What 
 | `bio_markdown` | string | 20–300 words. **Untrusted.** |
 | `skills` | string[] | Skills this contributor authored. |
 
-Profiles are opt-in. The repo rejects any frontmatter field outside the profile fields (`name`, `github`, `kind`, `role` and the link keys), so there is no email, location or employer to leak.
+Profiles are opt-in. The repo rejects any frontmatter field outside the profile fields (`name`, `github`, `role` and the link keys), so there is no email, location or employer to leak.
 
 #### Links
 

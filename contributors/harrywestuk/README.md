@@ -1,7 +1,6 @@
 ---
 name: Harry West
 github: harrywestuk
-kind: person
 role: Founder, GRCMANA. Lead maintainer.
 website: https://grcmana.com
 ---

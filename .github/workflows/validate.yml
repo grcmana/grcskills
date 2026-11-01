@@ -21,4 +21,4 @@ jobs:
       - name: Test catalogue checks
         run: python3 -m unittest discover -s scripts
       - name: Validate catalogue metadata
-        run: python3 scripts/build_catalog.py
+        run: python3 scripts/build_catalog.py --require-readmes

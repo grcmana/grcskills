@@ -50,8 +50,8 @@ BIO_WORDS = (20, 300)
 MIN_FAQ = 3
 
 # Contributor profiles are public personal data, so only these fields are allowed.
-CONTRIBUTOR_FIELDS = {"name", "github", "kind", "role", *LINK_PLATFORMS}
-CONTRIBUTOR_KINDS = {"person", "organisation"}
+# Profiles are for people only. `kind` stays in catalog.json (always "person") for schema-2 compatibility.
+CONTRIBUTOR_FIELDS = {"name", "github", "role", *LINK_PLATFORMS}
 HANDLE_RE = re.compile(r"^[a-z0-9](?:[a-z0-9-]{0,38})$")
 SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
@@ -155,9 +155,6 @@ def load_contributors(errors: list[str]) -> dict[str, dict]:
             errors.append(f"{where}: 'github' must match the folder name")
         if not fields.get("name"):
             errors.append(f"{where}: 'name' is required")
-        kind = fields.get("kind", "person")
-        if kind not in CONTRIBUTOR_KINDS:
-            errors.append(f"{where}: 'kind' must be one of {sorted(CONTRIBUTOR_KINDS)}")
         if len(fields.get("role", "")) > 80:
             errors.append(f"{where}: 'role' must be 80 characters or fewer")
         for k in LINK_PLATFORMS:
@@ -172,7 +169,7 @@ def load_contributors(errors: list[str]) -> dict[str, dict]:
         people[handle] = {
             "handle": handle,
             "name": fields.get("name", ""),
-            "kind": kind,
+            "kind": "person",
             "role": fields.get("role", ""),
             "links": {k: fields[k] for k in LINK_PLATFORMS if fields.get(k)},
             "github_url": f"https://github.com/{handle}",
