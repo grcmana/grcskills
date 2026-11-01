@@ -50,7 +50,7 @@ Name skills in lowercase-with-hyphens, after the job to be done (e.g. `supplier-
 ```bash
 python3 scripts/sync_references.py          # sync shared knowledge into skills
 python3 scripts/sync_references.py --check  # what CI runs
-python3 scripts/build_catalog.py            # validates metadata, skill pages, categories and profiles
+python3 scripts/build_catalog.py --require-readmes  # what CI runs: metadata, skill pages, categories, profiles
 ```
 
 `metadata.summary` is the one-line, plain-English description shown on grcskills.io. `metadata.frameworks` is `all` or a comma-separated list of `ISO 27001, SOC 2, Cyber Essentials, GDPR, ISO 42001`. The website is maintained separately and updates only when maintainers cut a release.
