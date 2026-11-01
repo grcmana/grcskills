@@ -42,7 +42,7 @@ The worked example must be fictional. [`skills/dpia/README.md`](skills/dpia/READ
 A skill's category is `metadata.collection` in `SKILL.md`. Categories are defined in `collections/<slug>.md`: a title, a display order, and a 100–400 word introduction for the category page. Propose a new category in an issue first.
 
 ## Get credited
-Add a profile at `contributors/<your-github-handle>.md` (see [`contributors/README.md`](contributors/README.md)) and add your handle to `metadata.author` in any skill you wrote, e.g. `author: grcmana, your-handle`. Profiles are optional and public; only name, role, website, LinkedIn and a short bio are accepted.
+Add a profile at `contributors/<your-github-handle>/README.md`, optionally with an `avatar.png` (see [`contributors/README.md`](contributors/README.md)), and add your handle to `metadata.author` in any skill you wrote, e.g. `author: grcmana, your-handle`. Profiles are optional and public; only a name, role, a few profile links (website, LinkedIn, X, YouTube, Medium, TikTok, Facebook) and a short bio are accepted.
 
 Name skills in lowercase-with-hyphens, after the job to be done (e.g. `supplier-risk`, not `tprm-v2`). The `description` must say **what the skill does and when to use it**, including the phrases practitioners actually type.
 

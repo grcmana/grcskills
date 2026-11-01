@@ -10,7 +10,8 @@ Sources:
   skills/<name>/SKILL.md     frontmatter metadata (agent-facing)
   skills/<name>/README.md    human-facing skill page (800-1500 words, fixed headings)
   collections/<slug>.md      category pages: title, order, intro
-  contributors/<handle>.md   opt-in contributor profiles, keyed by GitHub handle
+  contributors/<handle>/      opt-in contributor profiles: README.md plus an optional
+                              avatar.png or avatar.jpg (checks in contributor_checks.py)
 
 Schema 2 is a strict superset of schema 1: every schema-1 field is unchanged.
 
@@ -24,6 +25,8 @@ import json
 import re
 import sys
 from pathlib import Path
+
+from contributor_checks import AVATAR_NAMES, LINK_PLATFORMS, avatar_problem, link_problem
 
 ROOT = Path(__file__).resolve().parent.parent
 FRAMEWORKS = ["ISO 27001", "SOC 2", "Cyber Essentials", "GDPR", "ISO 42001"]
@@ -47,7 +50,7 @@ BIO_WORDS = (20, 300)
 MIN_FAQ = 3
 
 # Contributor profiles are public personal data, so only these fields are allowed.
-CONTRIBUTOR_FIELDS = {"name", "github", "kind", "role", "website", "linkedin"}
+CONTRIBUTOR_FIELDS = {"name", "github", "kind", "role", *LINK_PLATFORMS}
 CONTRIBUTOR_KINDS = {"person", "organisation"}
 HANDLE_RE = re.compile(r"^[a-z0-9](?:[a-z0-9-]{0,38})$")
 SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -115,20 +118,41 @@ def load_collections(errors: list[str]) -> list[dict]:
 
 def load_contributors(errors: list[str]) -> dict[str, dict]:
     people = {}
-    for f in sorted((ROOT / "contributors").glob("*.md")):
-        if f.name.upper() == "README.MD":
+    base = ROOT / "contributors"
+    for f in sorted(base.iterdir()):
+        if f.is_file() and f.name != "README.md":
+            errors.append(f"contributors/{f.name}: profiles live in contributors/<handle>/README.md, "
+                          "with an optional avatar.png or avatar.jpg beside it")
+    for d in sorted(p for p in base.iterdir() if p.is_dir()):
+        handle = d.name
+        where = f"contributors/{handle}/README.md"
+        if not HANDLE_RE.match(handle):
+            errors.append(f"contributors/{handle}/: folder name must be your GitHub handle in lowercase")
+        files = sorted(x.name for x in d.iterdir())
+        stray = [x for x in files if x != "README.md" and x not in AVATAR_NAMES]
+        if stray:
+            errors.append(f"contributors/{handle}/: only README.md and one of {list(AVATAR_NAMES)} "
+                          f"are allowed (found {stray})")
+        avatars = [x for x in files if x in AVATAR_NAMES]
+        if len(avatars) > 1:
+            errors.append(f"contributors/{handle}/: more than one avatar ({avatars}); keep one")
+        avatar_file = None
+        if avatars:
+            avatar_file = f"contributors/{handle}/{avatars[0]}"
+            problem = avatar_problem(avatars[0], (d / avatars[0]).read_bytes())
+            if problem:
+                errors.append(f"{avatar_file}: {problem}")
+        if "README.md" not in files:
+            errors.append(f"contributors/{handle}/: README.md profile is missing")
             continue
-        where = f"contributors/{f.name}"
-        fm, body = split_frontmatter(f.read_text())
+
+        fm, body = split_frontmatter((d / "README.md").read_text())
         fields = top_level_fields(fm)
-        handle = f.stem
         extra = set(fields) - CONTRIBUTOR_FIELDS
         if extra:
             errors.append(f"{where}: fields not allowed: {sorted(extra)} (allowed: {sorted(CONTRIBUTOR_FIELDS)})")
-        if not HANDLE_RE.match(handle):
-            errors.append(f"{where}: file name must be your GitHub handle in lowercase")
         if fields.get("github", "").lower() != handle:
-            errors.append(f"{where}: 'github' must match the file name")
+            errors.append(f"{where}: 'github' must match the folder name")
         if not fields.get("name"):
             errors.append(f"{where}: 'name' is required")
         kind = fields.get("kind", "person")
@@ -136,11 +160,10 @@ def load_contributors(errors: list[str]) -> dict[str, dict]:
             errors.append(f"{where}: 'kind' must be one of {sorted(CONTRIBUTOR_KINDS)}")
         if len(fields.get("role", "")) > 80:
             errors.append(f"{where}: 'role' must be 80 characters or fewer")
-        for k in ("website", "linkedin"):
-            if fields.get(k) and not fields[k].startswith("https://"):
-                errors.append(f"{where}: '{k}' must be an https:// URL")
-        if fields.get("linkedin") and not fields["linkedin"].startswith("https://www.linkedin.com/"):
-            errors.append(f"{where}: 'linkedin' must be a https://www.linkedin.com/ URL")
+        for k in LINK_PLATFORMS:
+            problem = link_problem(k, fields[k]) if fields.get(k) else None
+            if problem:
+                errors.append(f"{where}: '{k}' {problem}")
         n = word_count(body)
         if not BIO_WORDS[0] <= n <= BIO_WORDS[1]:
             errors.append(f"{where}: bio is {n} words; must be {BIO_WORDS[0]}-{BIO_WORDS[1]}")
@@ -151,9 +174,10 @@ def load_contributors(errors: list[str]) -> dict[str, dict]:
             "name": fields.get("name", ""),
             "kind": kind,
             "role": fields.get("role", ""),
-            "links": {k: fields[k] for k in ("website", "linkedin") if fields.get(k)},
+            "links": {k: fields[k] for k in LINK_PLATFORMS if fields.get(k)},
             "github_url": f"https://github.com/{handle}",
-            "avatar": f"https://github.com/{handle}.png",
+            "avatar": f"https://github.com/{handle}.png",   # the fallback; never changes
+            "avatar_file": avatar_file,
             "bio_markdown": body.strip(),
             "skills": [],
         }
@@ -225,7 +249,7 @@ def main() -> int:
             if a in contributors:
                 contributors[a]["skills"].append(name)
             else:
-                errors.append(f"{name}: author '{a}' has no profile at contributors/{a}.md")
+                errors.append(f"{name}: author '{a}' has no profile at contributors/{a}/README.md")
 
         readme_path = sd / "README.md"
         if readme_path.exists():

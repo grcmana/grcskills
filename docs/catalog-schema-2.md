@@ -10,7 +10,7 @@ grcskills.io is a single page today. We want three new page types:
 |---|---|---|
 | Skill page (800–1,500 words) | `/skills/<name>` | `skills/<name>/README.md` |
 | Categories index and category page | `/categories`, `/categories/<slug>` | `collections/<slug>.md` |
-| Contributors index and contributor page | `/contributors`, `/contributors/<handle>` | `contributors/<handle>.md` plus `metadata.author` in each `SKILL.md` |
+| Contributors index and contributor page | `/contributors`, `/contributors/<handle>` | `contributors/<handle>/README.md` (plus optional `avatar.png`/`.jpg`) and `metadata.author` in each `SKILL.md` |
 
 All of this content stays in the public repo, is reviewed in the same PRs as the skills, and reaches the site only through `catalog.json` on a pinned release. **No CMS.** Decision D6 (the website consumes only a released `catalog.json`) is unchanged.
 
@@ -60,13 +60,36 @@ The README always has these `##` sections, in this order (enforced by CI): What 
 | `name` | string | Display name. |
 | `kind` | `"person"` or `"organisation"` | |
 | `role` | string | 80 characters max, may be empty. |
-| `links` | object | Optional `website`, `linkedin`. Always `https://`. |
-| `github_url` | string | |
-| `avatar` | string | `https://github.com/<handle>.png` |
+| `links` | object | Optional keys `website`, `linkedin`, `x`, `youtube`, `medium`, `tiktok`, `facebook`, each a full `https://` URL validated against the host table below. A key is omitted when unset, never an empty string. |
+| `github_url` | string | Derived from the handle. |
+| `avatar` | string | Always `https://github.com/<handle>.png`. The fallback picture; never changes. |
+| `avatar_file` | string or `null` | Repo-relative path to a contributor-provided picture: `contributors/<handle>/avatar.png` (or `.jpg`/`.jpeg`). `null` when there is none. Added 2026-11-01. |
 | `bio_markdown` | string | 20–300 words. **Untrusted.** |
 | `skills` | string[] | Skills this contributor authored. |
 
-Profiles are opt-in. The repo rejects any field outside the list above, so there is no email, location or employer to leak.
+Profiles are opt-in. The repo rejects any frontmatter field outside the profile fields (`name`, `github`, `kind`, `role` and the link keys), so there is no email, location or employer to leak.
+
+#### Links
+
+Each link is parsed and its host checked against this table; a string-prefix check is not enough (`https://www.linkedin.com.evil.example/`). Every link must use `https:`, contain no credentials, set no port, contain no whitespace, control characters or backslashes, and be at most 300 characters. The host must be a plain ASCII domain name (punycode for international domains), not an IP address.
+
+| Key | Allowed hosts |
+|---|---|
+| `website` | any |
+| `linkedin` | `linkedin.com`, `www.linkedin.com` |
+| `x` | `x.com`, `www.x.com`, `twitter.com`, `www.twitter.com` |
+| `youtube` | `youtube.com`, `www.youtube.com` |
+| `medium` | `medium.com` and any `*.medium.com` |
+| `tiktok` | `tiktok.com`, `www.tiktok.com` |
+| `facebook` | `facebook.com`, `www.facebook.com` |
+
+The repo implementation is `scripts/contributor_checks.py`; the site's is `src/lib/catalog/links.ts`. The repo is deliberately as strict as or stricter than the site, so anything CI accepts also passes the site build. Change both together.
+
+#### Avatars
+
+`avatar_file` is validated by CI: a real PNG or JPEG (magic bytes), not animated (no APNG), square, at least 256×256 px, at most 500 KB, and with no EXIF, XMP or IPTC metadata (photos can carry GPS location). A folder may hold only `README.md` and at most one avatar file.
+
+The site never takes a URL from the catalogue. It builds `https://raw.githubusercontent.com/grcmana/grcskills/<release>/<avatar_file>` itself, after checking the path matches `^contributors/<handle>/avatar\.(png|jpe?g)$`, so the picture is pinned to the release. Fallback order: `avatar_file`, then the GitHub avatar, then initials. A failed avatar never fails the build.
 
 ## Rendering requirements for the site
 
@@ -76,10 +99,10 @@ Community-written Markdown now reaches the site. HTML-escaping string fields is 
 2. **Links:**
    - `../<name>/` → `/skills/<name>`.
    - Other relative links → `https://github.com/grcmana/grcskills/blob/<release>/skills/<name>/<path>`.
-   - External links get `rel="nofollow ugc noopener"`.
+   - External links, including contributor profile links, get `rel="nofollow ugc noopener noreferrer"`.
    - Allow only `https:` and `mailto:` schemes.
 3. **Images:** none are expected in v1. Strip them, or allow only images served from the release.
-4. **Avatars:** prefer downloading them at build time and self-hosting, so visitors don't make third-party requests to GitHub. Fall back to initials.
+4. **Avatars:** download them at build time and self-host, so visitors don't make third-party requests to GitHub. Try `avatar_file` first, then `avatar`, then initials.
 5. **Skills without a page** (`readme: null`): render a short page from `summary`, `description`, frameworks and install command, and mark it `noindex` until the README lands.
 6. **SEO:**
    - Meta description: `summary`.
