@@ -68,11 +68,15 @@ def field(fm: str, key: str) -> str:
 
 
 def top_level_fields(fm: str) -> dict[str, str]:
+    """Flat `key: value` frontmatter. As in YAML, ` # ...` after a value is a comment
+    (a `#` with no space before it, as in a URL fragment, is part of the value)."""
     out = {}
     for line in fm.splitlines():
         if line and not line.startswith((" ", "#")) and ":" in line:
             k, v = line.split(":", 1)
-            out[k.strip()] = v.strip().strip('"').strip("'")
+            v = v.strip()
+            quoted = re.match(r"""^(["'])(.*?)\1(?:\s+#.*)?$""", v)
+            out[k.strip()] = quoted.group(2) if quoted else re.sub(r"\s+#.*$", "", v).strip()
     return out
 
 
