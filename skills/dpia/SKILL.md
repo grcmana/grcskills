@@ -3,7 +3,7 @@ name: dpia
 description: Screen for and draft a GDPR Data Protection Impact Assessment (Art. 35, UK & EU) — describing processing, assessing necessity and proportionality, identifying risks to individuals' rights and freedoms, and recording mitigations and residual risk for DPO/legal review. Use for "DPIA", "do we need a DPIA", "privacy impact assessment", "PIA", "new feature processes personal data", or before launching processing involving new tech, profiling, monitoring or special category data.
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: frameworks
   summary: "Screens for and drafts a GDPR data protection impact assessment."

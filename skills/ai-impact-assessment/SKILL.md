@@ -3,7 +3,7 @@ name: ai-impact-assessment
 description: Inventory AI systems and run AI risk and AI system impact assessments aligned to ISO/IEC 42001 (6.1.2, 6.1.4, Annex A.5) with GDPR DPIA triggers — covering AI in your product and staff use of AI tools. Use for "AI risk assessment", "AI impact assessment", "ISO 42001", "AI governance", "is our AI feature risky", "AI inventory", or before launching an AI feature.
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: risk-management
   summary: "Inventories your AI and assesses its risks and impacts on people."

@@ -3,7 +3,7 @@ name: risk-register
 description: Identify, assess, treat and review information security, privacy, third-party and AI risks using a documented 5x5 methodology, producing an audit-ready risk register (CSV) and treatment plan mapped to ISO 27001, SOC 2, GDPR and ISO 42001 controls. Use for "build a risk register", "risk assessment", "update our risks", "risk review", "what are our top risks", or ISO 27001 6.1.2/6.1.3 and SOC 2 CC3 work.
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: risk-management
   summary: "Identifies, scores and treats your risks, with each treatment mapped to controls."

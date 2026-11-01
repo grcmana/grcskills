@@ -58,7 +58,7 @@ The README always has these `##` sections, in this order (enforced by CI): What 
 |---|---|---|
 | `handle` | string | GitHub handle, lowercase. Use in the URL. |
 | `name` | string | Display name. |
-| `kind` | `"person"` or `"organisation"` | |
+| `kind` | `"person"` | Always `"person"`: profiles are for individuals only. Kept for compatibility; may be removed in a future schema. |
 | `role` | string | 80 characters max, may be empty. |
 | `links` | object | Optional `website`, `linkedin`. Always `https://`. |
 | `github_url` | string | |

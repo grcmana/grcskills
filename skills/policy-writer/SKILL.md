@@ -3,7 +3,7 @@ name: policy-writer
 description: Recommend the minimum viable policy set for your selected frameworks and draft tailored, testable, auditor-ready information security, privacy and AI policies (ISO 27001, SOC 2, Cyber Essentials, GDPR, ISO 42001) from company context. Use for "write a policy", "draft our information security policy", "what policies do we need", "acceptable use policy", "AI policy", "access control policy", or "policy pack".
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: policy-management
   summary: "Recommends the policies you actually need and drafts them for your stack."

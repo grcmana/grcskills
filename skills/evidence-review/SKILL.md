@@ -3,7 +3,7 @@ name: evidence-review
 description: Review collected audit evidence (exports, screenshots, tickets, documents) for relevance, completeness, dating, attribution and authenticity before the auditor sees it — rating quality, flagging gaps and sensitive data, and updating the evidence tracker. Use for "review this evidence", "is this good enough for the auditor", "check our evidence", "pre-audit evidence QA", or "will this screenshot pass".
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: audit-evidence
   summary: "Checks collected evidence before your auditor sees it."

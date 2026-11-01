@@ -3,7 +3,7 @@ name: grc-status
 description: Roll up the GRC workspace (risk register, policies, evidence tracker, readiness assessments, run logs) into a one-page programme status for leadership or the board — progress per framework, top risks, overdue actions, decisions needed, and next 30 days. Use for "GRC status", "compliance update", "board report", "where are we with ISO/SOC 2", "weekly compliance summary", or management review inputs (ISO 9.3).
 license: MIT
 metadata:
-  author: GRCMANA
+  author: harrywestuk
   version: 0.1.0
   collection: foundations
   summary: "Turns your workspace into a one-page status, board report or management review pack."
